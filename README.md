@@ -24,7 +24,7 @@ This project framework provides the following features:
 
 (ideally very short)
 ```bash
-bash deploy.sh -r "MyResource" -k "my_promptflow_api_key" -u "my_promptflow_api_endpoint"
+bash deploy.sh -resource "MyResource"  -location "MyResourceLocation" -apikey "my_promptflow_api_key" -apiurl "my_promptflow_api_endpoint"
 ```
 
 ### Quickstart
