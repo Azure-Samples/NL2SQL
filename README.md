@@ -23,10 +23,9 @@ This project framework provides the following features:
 ### Installation
 
 (ideally very short)
-
-- npm install [package name]
-- mvn install
-- ...
+```bash
+bash deploy.sh -r "MyResource" -k "my_promptflow_api_key" -u "my_promptflow_api_endpoint"
+```
 
 ### Quickstart
 (Add steps to get up and running quickly)
