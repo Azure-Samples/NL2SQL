@@ -1,0 +1,27 @@
+/* General Settings */  
+body {  
+    background-color: #0F172A; /* Dark background color */  
+    color: #FFFFFF; /* White text color */  
+}  
+
+.stDeployButton {visibility: hidden;}
+#MainMenu {visibility: hidden; }
+footer {visibility: hidden;}
+
+.main {
+    margin-top: -60px;
+}
+
+    /* Center alignment for title and subheader */
+.center-align {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    text-align: center;
+}
+
+.stButton button {
+    margin-top: 30px; /* Adjust the value as needed */
+}
