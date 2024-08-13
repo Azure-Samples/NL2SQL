@@ -1,29 +1,26 @@
-# Initialize variables
-RESOURCE_NAME=""
-REGION=""
-API_KEY=""
-API_BASE_URL=""
+#!/bin/bash
 
-# Parse named parameters
-while getopts ":r:k:u:" opt; do
-  case $opt in
-    resource) RESOURCE_NAME="$OPTARG"
-    ;;
-    location) REGION="$OPTARG"
-    ;;
-    apikey) API_KEY="$OPTARG"
-    ;;
-    apiurl) API_BASE_URL="$OPTARG"
-    ;;
-    \?) echo "Invalid option -$OPTARG" >&2
-    ;;
-  esac
+# Function to display usage
+usage() {
+    echo "Usage: $0 -resource <Resource name> -location <Region> -apikey <API_KEY> -apiurl <API_BASE_URL>"
+    exit 1
+}
+
+# Parse command-line arguments
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        -resource) RESOURCE_NAME="$2"; shift ;;
+        -location) REGION="$2"; shift ;;
+        -apikey) API_KEY="$2"; shift ;;
+        -apiurl) API_URL="$2"; shift ;;
+        *) echo "Unknown parameter passed: $1"; usage ;;
+    esac
+    shift
 done
 
-# Check if all required parameters are set
-if [ -z "$RESOURCE_NAME" ] || [ -z "$API_KEY" ] || [ -z "$API_BASE_URL" ]; then
-  echo "Usage: $0 -r <Resource name> -k <API_KEY> -u <API_BASE_URL>"
-  exit 1
+# Check if all required arguments are provided
+if [ -z "$RESOURCE_NAME" ] || [ -z "$REGION" ] || [ -z "$API_KEY" ] || [ -z "$API_URL" ]; then
+    usage
 fi
 
 
@@ -50,12 +47,8 @@ ACR_PASSWORD=$(az acr credential show --name $ACR_NAME --query "passwords[0].val
 ACR_LOCATION=$(az acr show --name $ACR_NAME --query "location" --output tsv)
 
 # Deploy the container to Azure Container App Service
-env_name=cae-frontchatwithpdf
-app_name=ca-frontchatwithpdf
-
-# Retrieve the API_BASE_URL and API_KEY from keyvault 
-API_BASE_URL=https://nl2sql.swedencentral.inference.ml.azure.com/scor
-API_KEY=JJUl2NB3giSckF6AJE6mAfQDRzT6tGIM
+env_name=cae-frontnl2sql
+app_name=ca-frontnl2sql
 
 az containerapp env create \
     --name $env_name \
@@ -65,7 +58,7 @@ az containerapp env create \
 az containerapp create \
     --resource-group $RESOURCE_NAME \
     --name $app_name \
-    --image $ACR_NAME.azurecr.io/insight_engine/frontchatwithpdf:latest \
+    --image $ACR_NAME.azurecr.io/insight_engine/frontnl2sql:latest \
     --cpu 3 \
     --memory 6 \
     --registry-server $ACR_NAME.azurecr.io \
