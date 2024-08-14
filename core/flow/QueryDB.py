@@ -15,7 +15,7 @@ def query_db(sql_query: str, SQL_conn: CustomConnection) -> str:
 
     try:
         cursor.execute(sql_query)
-
+        
         # Get the column names from cursor.description
         columns = [column[0] for column in cursor.description]
 
@@ -24,11 +24,11 @@ def query_db(sql_query: str, SQL_conn: CustomConnection) -> str:
 
         # Fetch all rows and create dictionaries
         for row in cursor.fetchall():
-            results.append(dict(zip(columns, row)))
+            results.append(dict(zip(columns, row)))  
     except Exception as e:
         return f"Error: {e}"
     cursor.close()
     conn.close()
 
     print(results)
-    return "SQL Query: " + str(results)
+    return 'SQL Query: ' + str(results)

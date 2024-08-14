@@ -10,19 +10,16 @@ inputs:
   question:
     type: string
     is_chat_input: true
-    default: Who are the top three best sellers?
+    default: Who are my top 3 suppliers for the uBEs category?
 outputs:
   content:
     type: string
     reference: ${FormatResponse.output}
     is_chat_output: true
-  sql_query:
+  role:
     type: string
-    reference: ${EnsureSQL.output}
+    reference: assistant
     is_chat_output: false
-  output:
-    type: string
-    reference: ${QueryDB.output}
 nodes:
 - name: chat_nl2sql
   type: llm
