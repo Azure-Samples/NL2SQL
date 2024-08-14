@@ -3,9 +3,12 @@ import json
 import os
 import re
 
+
 def parse_query(response_content):
     # Extract the SQL query using regular expressions
-    query_match = re.search(r"SQL Query:\s*```sql\s*(.*?)\s*```", response_content, re.DOTALL)
+    query_match = re.search(
+        r"SQL Query:\s*```sql\s*(.*?)\s*```", response_content, re.DOTALL
+    )
     query = query_match.group(1) if query_match else ""
 
     # Extract the table part
@@ -37,20 +40,15 @@ class APIClient:
         headers = {
             "Content-Type": "application/json",
             "Authorization": f"Bearer {self.api_key}",
-            "Accept": "application/json"
-            }
-        
-        data = {
-            "question": query,
-            "chat_history": chat_history
+            "Accept": "application/json",
         }
-        
+
+        data = {"question": query, "chat_history": chat_history}
+
         response = requests.post(self.base_url, json=data, headers=headers)
         response.raise_for_status()
 
-
         return response.json()
-    
+
     def parse_response(self, response_content):
         return parse_query(response_content)
-  
