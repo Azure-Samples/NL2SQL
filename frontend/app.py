@@ -15,6 +15,13 @@ def table_to_markdown(table):
     return table_md
 
 
+# Queries to show when the user clicks the button
+suggested_queries = [
+    "Who are my top 3 suppliers for the uBEs category?",
+    "Which one is the most profitable product?",
+]
+
+
 # Initialize the API client
 api_client = APIClient(os.environ.get("API_URL"), os.environ.get("API_KEY"))
 
@@ -37,13 +44,26 @@ if "show_questions" not in st.session_state:
 if st.button("📊[Click to show suggested questions](#)"):
     st.session_state.show_questions = not st.session_state.show_questions
 
+# Initialize the custom query
+custom_query = None
+
 # Show or hide the questions based on the state
 if st.session_state.show_questions:
     col1, col2 = st.columns(2)
     with col1:
-        st.markdown("1. Who are my top 3 suppliers for the uBEs category?")
+        if st.button(
+            suggested_queries[0],
+            kwargs={"clicked_button_ix": 1},
+            use_container_width=True,
+        ):
+            custom_query = suggested_queries[0]
     with col2:
-        st.markdown("2. Who are my top 3 suppliers for the uBEs category?")
+        if st.button(
+            suggested_queries[1],
+            kwargs={"clicked_button_ix": 2},
+            use_container_width=True,
+        ):
+            custom_query = suggested_queries[1]
 
 
 # Initialize session state messages if not already initialized
@@ -56,7 +76,9 @@ for msg in st.session_state.messages:
         with st.chat_message("user"):
             st.write(msg["content"])
     else:
-        query, table = api_client.parse_response(msg["content"])
+        query = msg["content"].get("query")
+        table = msg["content"].get("table")
+
         with st.chat_message("assistant"):
             st.html("<span class='chat-assistant'></span>")
             st.code(query, language="sql")
@@ -70,19 +92,19 @@ for msg in st.session_state.messages:
 #  Gwet user query and get response from the API
 user_query = st.chat_input(placeholder="Ask me anything!")
 
-if user_query:
-    st.session_state.messages.append({"role": "user", "content": user_query})
+if user_query or custom_query:
+    query_input = user_query or custom_query
+    st.session_state.messages.append({"role": "user", "content": query_input})
     with st.chat_message("user"):
-        st.write(user_query)
+        st.write(query_input)
 
     with st.chat_message("assistant"):
-        response = api_client.get_response(
-            user_query, chat_history=st.session_state.messages
+        query, table = api_client.get_response_formatted(
+            query_input, chat_history=st.session_state.messages
         )
         st.session_state.messages.append(
-            {"role": "assistant", "content": response["content"]}
+            {"role": "assistant", "content": {"query": query, "table": table}}
         )
-        query, table = api_client.parse_response(response["content"])
         st.html("<span class='chat-assistant'></span>")
         st.code(query, language="sql")
 

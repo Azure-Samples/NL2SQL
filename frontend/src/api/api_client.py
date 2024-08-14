@@ -50,5 +50,7 @@ class APIClient:
 
         return response.json()
 
-    def parse_response(self, response_content):
-        return parse_query(response_content)
+    def get_response_formatted(self, query, chat_history=[]):
+        response = self.get_response(query, chat_history)
+        query, table = parse_query(response["content"])
+        return query, table
