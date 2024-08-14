@@ -1,0 +1,36 @@
+/* General Settings */  
+.stDeployButton {visibility: hidden;}
+#MainMenu {visibility: hidden; }
+footer {visibility: hidden;}
+
+.main {
+    margin-top: -60px;
+}
+
+/* Center alignment for title and subheader */
+.center-align {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    text-align: center;
+}
+
+.stButton button {
+    margin-top: 30px; /* Adjust the value as needed */
+}
+
+.query-style {
+    font-family: monospace;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.stChatMessage:has(.chat-assistant) {
+    background-color: white;
+}
+
+.st-emotion-cache-1hskohh {
+    background: transparent;
+}
