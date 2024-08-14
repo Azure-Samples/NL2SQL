@@ -23,7 +23,6 @@ if [ -z "$RESOURCE_NAME" ] || [ -z "$REGION" ] || [ -z "$API_KEY" ] || [ -z "$AP
     usage
 fi
 
-
 # Build the Docker image
 docker build -f ./frontend/Dockerfile -t frontnl2sql ./frontend
 
@@ -67,4 +66,4 @@ az containerapp create \
     --environment $env_name \
     --ingress external \
     --target-port 8501 \
-    --env-vars API_BASE_URL=$API_BASE_URL API_KEY=$API_KEY
+    --env-vars API_URL=$API_URL API_KEY=$API_KEY
