@@ -1,5 +1,5 @@
 ---
-name: SQL to Natural Language - Solution Accelerator (Python)
+name: Natural Language to SQL - Solution Accelerator (Python)
 description: Generate natural language responses from SQL query outputs using Azure's Prompt Flow.
 languages:
 - python
@@ -16,11 +16,11 @@ urlFragment: sql-to-natural-language-solution-accelerator
 ---
 <!-- YAML front-matter schema: https://review.learn.microsoft.com/en-us/help/contribute/samples/process/onboarding?branch=main#supported-metadata-fields-for-readmemd -->
 
-# SQL to Natural Language - Solution accelerator
+# Natural Language to SQL - Solution accelerator
 
 
  ##### Table of Contents
-- [SQL to Natural Language - Solution accelerator](#chat-with-your-data---solution-accelerator)
+- [Natural Language to SQL - Solution accelerator](#chat-with-your-data---solution-accelerator)
         - [Table of Contents](#table-of-contents)
   - [User story](#user-story)
     - [About this repo](#about-this-repo)
@@ -40,7 +40,7 @@ urlFragment: sql-to-natural-language-solution-accelerator
   - [Disclaimers](#disclaimers)
 ## User story
 
-Welcome to the *SQL to Natural Language* Solution accelerator repository! The nl2sql project leverages Azure's Prompt Flow to automatically generate natural language responses based on SQL query outputs. By providing a SQL query and its corresponding database output, the system:
+Welcome to the *Natural Language to SQL* Solution accelerator repository! The nl2sql project leverages Azure's Prompt Flow to automatically generate natural language responses based on SQL query outputs. By providing a SQL query and its corresponding database output, the system:
 
 - Automates Interpretation: Automatically interprets and formats SQL query results into clear, concise, and easy-to-understand natural language responses.
 - Ensures Consistency: Delivers consistent responses by following a standardized template, reducing the risk of miscommunication or data misinterpretation.
