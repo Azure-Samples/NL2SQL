@@ -14,6 +14,7 @@ def table_to_markdown(table):
         table_md += "| " + " | ".join(str(value) for value in row.values()) + " |\n"
     return table_md
 
+
 # Queries to show when the user clicks the button
 suggested_queries = [
     "Who are my top 3 suppliers for the uBEs category?",
@@ -50,10 +51,18 @@ custom_query = None
 if st.session_state.show_questions:
     col1, col2 = st.columns(2)
     with col1:
-        if st.button(suggested_queries[0], kwargs={'clicked_button_ix': 1}, use_container_width=True):  
+        if st.button(
+            suggested_queries[0],
+            kwargs={"clicked_button_ix": 1},
+            use_container_width=True,
+        ):
             custom_query = suggested_queries[0]
     with col2:
-        if st.button(suggested_queries[1], kwargs={'clicked_button_ix': 2}, use_container_width=True):
+        if st.button(
+            suggested_queries[1],
+            kwargs={"clicked_button_ix": 2},
+            use_container_width=True,
+        ):
             custom_query = suggested_queries[1]
 
 
@@ -68,7 +77,7 @@ for msg in st.session_state.messages:
             st.write(msg["content"])
     else:
         query = msg["content"].get("query")
-        table =  msg["content"].get("table")
+        table = msg["content"].get("table")
 
         with st.chat_message("assistant"):
             st.html("<span class='chat-assistant'></span>")
@@ -104,5 +113,3 @@ if user_query or custom_query:
         if table:
             table_md = table_to_markdown(table)
             st.markdown(table_md)
-
-    

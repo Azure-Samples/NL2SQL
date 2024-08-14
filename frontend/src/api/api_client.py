@@ -49,10 +49,8 @@ class APIClient:
         response.raise_for_status()
 
         return response.json()
-    
+
     def get_response_formatted(self, query, chat_history=[]):
         response = self.get_response(query, chat_history)
         query, table = parse_query(response["content"])
         return query, table
-
-
