@@ -16,7 +16,7 @@ urlFragment: sql-to-natural-language-solution-accelerator
 ---
 <!-- YAML front-matter schema: https://review.learn.microsoft.com/en-us/help/contribute/samples/process/onboarding?branch=main#supported-metadata-fields-for-readmemd -->
 
-# Chat with your data - Solution accelerator
+# SQL to Natural Language - Solution accelerator
 
 
  ##### Table of Contents
