@@ -1,6 +1,6 @@
 ---
 name: Natural Language to SQL - Solution Accelerator (Python)
-description: Generate SQL query outputs natural language responses from SQL query outputs using Azure's Prompt Flow.
+description: Convert natural language text into SQL queries using Azure's Prompt Flow, automating the generation of SQL query outputs from natural language inputs.
 languages:
 - python
 - azure-prompt-flow
@@ -11,7 +11,7 @@ products:
 - azure-sql-database
 - azure
 page_type: sample
-urlFragment: sql-to-natural-language-solution-accelerator
+urlFragment: natural-language-to-sql-solution-accelerator
 
 ---
 <!-- YAML front-matter schema: https://review.learn.microsoft.com/en-us/help/contribute/samples/process/onboarding?branch=main#supported-metadata-fields-for-readmemd -->
@@ -42,19 +42,18 @@ urlFragment: sql-to-natural-language-solution-accelerator
 
 # Welcome to the *Natural Language to SQL* Solution Accelerator
 
-The *Natural Language to SQL* project leverages Azure's Prompt Flow to seamlessly translate SQL query results into clear, understandable natural language responses. This solution automates the interpretation of SQL outputs, ensuring consistency and efficiency in communication.
+The *Natural Language to SQL* project uses Azure's Prompt Flow to automatically generate SQL queries based on natural language inputs. This solution simplifies the process of converting natural language into SQL queries, ensuring accuracy and efficiency.
 
 ## Key Features
 
-- **Automated Interpretation**: Automatically converts SQL query results into natural language responses, making complex data easier to understand.
-- **Consistency**: Provides standardized responses based on predefined templates, minimizing errors and ensuring clarity.
-- **Time Savings**: Eliminates the manual effort required to interpret SQL results, freeing up time for more strategic tasks.
+- **Automated Query Generation**: Automatically translates natural language into SQL queries, making data retrieval more intuitive.
+- **Consistency**: Delivers standardized queries based on predefined templates, reducing errors and enhancing reliability.
+- **Efficiency**: Saves time by eliminating the manual process of writing SQL queries, allowing users to focus on data analysis and decision-making.
 
-By integrating this solution, you can streamline the process of generating natural language responses from SQL queries, enhancing both productivity and accuracy in data communication.
+Integrate this solution to streamline the generation of SQL queries from natural language, improving productivity and data handling accuracy.
 
 
 ### About this repo
-
 
 
 ### Target End Users
