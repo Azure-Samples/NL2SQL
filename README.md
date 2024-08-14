@@ -1,6 +1,6 @@
 ---
 name: Natural Language to SQL - Solution Accelerator (Python)
-description: Generate natural language responses from SQL query outputs using Azure's Prompt Flow.
+description: Generate SQL query outputs natural language responses from SQL query outputs using Azure's Prompt Flow.
 languages:
 - python
 - azure-prompt-flow
@@ -38,31 +38,32 @@ urlFragment: sql-to-natural-language-solution-accelerator
     - [Resource links](#resource-links)
     - [Licensing](#licensing)
   - [Disclaimers](#disclaimers)
-## User story
 
-Welcome to the *Natural Language to SQL* Solution accelerator repository! The nl2sql project leverages Azure's Prompt Flow to automatically generate natural language responses based on SQL query outputs. By providing a SQL query and its corresponding database output, the system:
 
-- Automates Interpretation: Automatically interprets and formats SQL query results into clear, concise, and easy-to-understand natural language responses.
-- Ensures Consistency: Delivers consistent responses by following a standardized template, reducing the risk of miscommunication or data misinterpretation.
-- Saves Time: Eliminates the need for manual translation of SQL results into natural language, allowing professionals to focus on higher-level tasks.
+# Welcome to the *Natural Language to SQL* Solution Accelerator
 
-![Solution Architecture]()
+The *Natural Language to SQL* project leverages Azure's Prompt Flow to seamlessly translate SQL query results into clear, understandable natural language responses. This solution automates the interpretation of SQL outputs, ensuring consistency and efficiency in communication.
+
+## Key Features
+
+- **Automated Interpretation**: Automatically converts SQL query results into natural language responses, making complex data easier to understand.
+- **Consistency**: Provides standardized responses based on predefined templates, minimizing errors and ensuring clarity.
+- **Time Savings**: Eliminates the manual effort required to interpret SQL results, freeing up time for more strategic tasks.
+
+By integrating this solution, you can streamline the process of generating natural language responses from SQL queries, enhancing both productivity and accuracy in data communication.
+
 
 ### About this repo
 
 
 
-### Key features
-
-
-
 ### Target End Users
 
-- **Data Analysts:** Automate SQL output translation into clear insights for reports.
-- **Database Administrators:** Provide accessible data insights to non-technical stakeholders.
-- **BI Professionals:** Integrate natural language explanations into dashboards.
-- **Developers & Solution Architects:** Enhance apps with natural language processing for SQL data.
-- **Non-Technical Business Users:** Understand data insights without deep SQL knowledge.
+- **Data Analysts:** Convert natural language queries into SQL for quick data extraction.
+- **Database Administrators:** Generate SQL queries from plain text for efficient data access.
+- **BI Professionals:** Create SQL queries from natural language for interactive dashboards.
+- **Developers & Solution Architects:** Integrate natural language-to-SQL functionality into apps.
+- **Non-Technical Users:** Formulate SQL queries using plain language for data analysis.
 
 
 ![One-click Deploy](/docs/images/oneClickDeploy.png)
@@ -77,8 +78,8 @@ Welcome to the *Natural Language to SQL* Solution accelerator repository! The nl
 - Azure Container Apps: For deploying and running containerized applications.
 - Azure CLI: For interacting with Azure services from the command line.
 - Docker: For building and pushing the container images.
-- Azure Functions: (If applicable) For any serverless functions used in the project.
-- Azure SQL Database: (If applicable) For managing SQL databases connected to the project.
+- Azure Functions: For any serverless functions used in the project.
+- Azure SQL Database: For managing SQL databases connected to the project.
 
 ### Required licenses
 - Microsoft 365 (optional: Teams extension only)
