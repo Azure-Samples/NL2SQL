@@ -20,12 +20,13 @@ urlFragment: natural-language-to-sql-solution-accelerator
 
 
  ##### Table of Contents
-- [Natural Language to SQL - Solution accelerator](#chat-with-your-data---solution-accelerator)
+- [Natural Language to SQL - Solution accelerator](#natural-language-to-sql---solution-accelerator)
         - [Table of Contents](#table-of-contents)
   - [User story](#user-story)
-    - [About this repo](#about-this-repo)
-    - [When should you use this repo?](#when-should-you-use-this-repo)
     - [Key features](#key-features)
+    - [About this repo](#about-this-repo)
+    - [When should you use this?](#when-should-you-use-this)
+    - [Example](#example)
     - [Target end users](#target-end-users)
   - [Deploy](#deploy)
     - [Pre-requisites](#pre-requisites)
@@ -44,6 +45,8 @@ urlFragment: natural-language-to-sql-solution-accelerator
 
 The *Natural Language to SQL* project uses Azure's Prompt Flow to automatically generate SQL queries based on natural language inputs. This solution simplifies the process of converting natural language into SQL queries, ensuring accuracy and efficiency.
 
+![Solution Architecture](/docs/images/architecture.png)
+
 ## Key Features
 
 - **Automated Query Generation**: Automatically translates natural language into SQL queries, making data retrieval more intuitive.
@@ -53,10 +56,63 @@ The *Natural Language to SQL* project uses Azure's Prompt Flow to automatically 
 Integrate this solution to streamline the generation of SQL queries from natural language, improving productivity and data handling accuracy.
 
 
-### About this repo
+Certainly! Here are the sections "About This Repo" and "When Should I Use This" for your `README.md`:
+
+---
+
+## About This Repo
+
+This repository contains a powerful tool for transforming natural language descriptions into SQL queries. By leveraging Azure's Prompt Flow, it automatically generates SQL `SELECT` statements based on a predefined database schema and executes them on a PostgreSQL database. The primary focus of this project is to streamline the process of querying databases without requiring users to have an in-depth knowledge of SQL syntax.
+
+The codebase is organized to facilitate easy integration, customization, and extension. Whether you're a developer looking to integrate natural language query capabilities into your application or a data analyst seeking to simplify your workflow, this repository provides the foundation you need.
+
+## When Should I Use This
+
+You should consider using this tool in the following scenarios:
+
+1. **Natural Language Querying**: If you want to enable users to query a PostgreSQL database using natural language descriptions, this tool is ideal for bridging the gap between user intent and database querying.
+
+2. **Automating SQL Query Generation**: When you need to automate the process of translating business requirements or user inputs into accurate SQL queries, this tool saves time and reduces errors.
+
+3. **Context-Aware Query Generation**: If your use case involves generating SQL queries that adapt based on previous interactions or context, this tool provides adaptive query generation capabilities.
+
+4. **Simplifying Data Access**: For data analysts or non-technical stakeholders who need to access data without writing complex SQL queries, this tool provides a user-friendly interface.
+
+5. **Educational Purposes**: If you’re teaching or learning SQL and want to explore how natural language can be transformed into SQL queries, this repository offers practical examples and a robust system to experiment with.
 
 
-### Target End Users
+## Example
+
+**Input:**
+```
+Retrieve the names and contact details of all sellers who have sold more than 50 products.
+```
+
+**Generated SQL Query:**
+```sql
+SELECT seller_name, seller_contact_number
+FROM sellers
+JOIN sales_transaction ON sellers.seller_id = sales_transaction.seller_id
+GROUP BY sellers.seller_id
+HAVING SUM(sales_transaction.quantity) > 50;
+```
+
+**Result:**
+```
++---------------+---------------------+
+| seller_name   | seller_contact_number|
++---------------+---------------------+
+| John Doe      | 123-456-7890         |
+| Jane Smith    | 987-654-3210         |
++---------------+---------------------+
+```
+
+
+
+
+
+
+## Target End Users
 
 - **Data Analysts:** Convert natural language queries into SQL for quick data extraction.
 - **Database Administrators:** Generate SQL queries from plain text for efficient data access.
