@@ -1,0 +1,65 @@
+{
+  "package": {},
+  "code": {
+    "chat.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "chat_history": {
+          "type": [
+            "string"
+          ]
+        },
+        "question": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "chat.jinja2"
+    },
+    "EnsureSQL.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "sql_query": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "EnsureSQL.jinja2"
+    },
+    "QueryDB.py": {
+      "type": "python",
+      "inputs": {
+        "sql_query": {
+          "type": [
+            "string"
+          ]
+        },
+        "SQL_conn": {
+          "type": [
+            "CustomConnection"
+          ]
+        }
+      },
+      "source": "QueryDB.py",
+      "function": "query_db"
+    },
+    "FormatResponse.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "sql_query": {
+          "type": [
+            "string"
+          ]
+        },
+        "db_result": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "FormatResponse.jinja2"
+    }
+  }
+}
