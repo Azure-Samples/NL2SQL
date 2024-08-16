@@ -3,7 +3,7 @@ $schema:
 type: azure_open_ai
 name: AOAILAB03
 module: promptflow.connections
-api_base: https://aoaolab03.openai.azure.com/
+api_base: ${env:AOAILAB03_API_BASE}
 api_key: ${env:AOAILAB03_API_KEY}
 api_type: azure
 api_version: '2024-02-01'
