@@ -397,15 +397,11 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-<<<<<<< HEAD
 NL2SQL-Chatbot/.runs/*
 NL2SQL-Chatbot/.venv
 NL2SQL-Chatbot/flow/.promptflow/
 NL2SQL-Chatbot/.promptflow/
 NL2SQL-Chatbot/flow/.venv/
 NL2SQL-Chatbot/runit/
-=======
-
-# Virtual venv
-*venv/
->>>>>>> def8c2786088caade524809b40b1444dc3e4411c
+.env
+notes.md

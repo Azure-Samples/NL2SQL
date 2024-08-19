@@ -80,6 +80,9 @@ You should consider using this tool in the following scenarios:
 
 5. **Educational Purposes**: If you’re teaching or learning SQL and want to explore how natural language can be transformed into SQL queries, this repository offers practical examples and a robust system to experiment with.
 
+## Tables Structure
+
+![Tables Structure](/docs/images/tables_structure.png)
 
 ## Example
 
@@ -106,11 +109,6 @@ HAVING SUM(sales_transaction.quantity) > 50;
 | Jane Smith    | 987-654-3210         |
 +---------------+---------------------+
 ```
-
-
-
-
-
 
 ## Target End Users
 
@@ -151,8 +149,13 @@ The following are links to the pricing details for some of the resources:
 
 There are two choices; the "Deploy to Azure" offers a one click deployment where you don't have to clone the code, alternatively if you would like a developer experience, follow the [Local deployment instructions](./docs/LOCAL_DEPLOYMENT.md).
 
-
 ### Testing the deployment
+
+#### Streamlit Application
+```bash streamlit run ./core/streamlit/app.py ```
+
+#### Prompt Flow API
+```bash pf flow serve --source ./core/flow --port 8080 --host localhost ``` 
 
 ## Supporting documentation
 
