@@ -48,11 +48,6 @@
     "FormatResponse.jinja2": {
       "type": "llm",
       "inputs": {
-        "sql_query": {
-          "type": [
-            "string"
-          ]
-        },
         "db_result": {
           "type": [
             "string"

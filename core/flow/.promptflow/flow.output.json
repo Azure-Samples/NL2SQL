@@ -1,0 +1,5 @@
+{
+  "database_output": "<table>\n<tr>\n<th>product_id</th>\n<th>product_name</th>\n<th>total_revenue</th>\n</tr>\n<tr>\n<td>1</td>\n<td>Apple iPhone 13</td>\n<td>204997.95</td>\n</tr>\n</table>",
+  "role": "assistant",
+  "sql_query": "SELECT \n    p.product_id, \n    p.product_name, \n    SUM(st.quantity * p.product_price) AS total_revenue\nFROM \n    products p\nJOIN \n    sales_transaction st ON p.product_id = st.product_id\nGROUP BY \n    p.product_id, p.product_name\nORDER BY \n    total_revenue DESC\nLIMIT 1;"
+}

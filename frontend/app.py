@@ -17,18 +17,18 @@ def table_to_markdown(table):
 
 # Queries to show when the user clicks the button
 suggested_queries = [
-    "Who are my top 3 suppliers for the uBEs category?",
+    "Give me the seller name with the best sales performance",
     "Which one is the most profitable product?",
 ]
 
 
 # Initialize the API client
 api_client = APIClient(os.environ.get("API_URL"), os.environ.get("API_KEY"))
-
+api_client = APIClient("http://localhost:8080/score", "")
 
 # Custom CSS to match the style
 st.set_page_config(page_title="DBCopilot", page_icon="📊")
-st.markdown("<style>" + open("styles.css").read() + "</style>", unsafe_allow_html=True)
+st.markdown("<style>" + open("./frontend/styles.css").read() + "</style>", unsafe_allow_html=True)
 st.title("DBCopilot")
 st.subheader("DBCopilot, your copilot for structured databases.")
 
@@ -86,8 +86,7 @@ for msg in st.session_state.messages:
         with st.chat_message("assistant"):
             st.html("<span class='chat-assistant'></span>")
             if table:
-                table_md = table_to_markdown(table)
-                st.markdown(table_md)
+                st.markdown(table, unsafe_allow_html=True)
 
 #  Gwet user query and get response from the API
 user_query = st.chat_input(placeholder="Ask me anything!")
@@ -111,5 +110,4 @@ if user_query or custom_query:
     with st.chat_message("assistant"):
         st.html("<span class='chat-assistant'></span>")
         if table:
-            table_md = table_to_markdown(table)
-            st.markdown(table_md)
+            st.markdown(table, unsafe_allow_html=True)

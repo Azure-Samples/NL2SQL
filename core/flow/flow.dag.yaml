@@ -10,9 +10,9 @@ inputs:
   question:
     type: string
     is_chat_input: true
-    default: Who are my top 3 suppliers for the uBEs category?
+    default: Which one is the most profitable product?
 outputs:
-  content:
+  database_output:
     type: string
     reference: ${FormatResponse.output}
     is_chat_output: true
@@ -20,6 +20,9 @@ outputs:
     type: string
     reference: assistant
     is_chat_output: false
+  sql_query:
+    type: string
+    reference: ${EnsureSQL.output}
 nodes:
 - name: chat_nl2sql
   type: llm
@@ -74,7 +77,6 @@ nodes:
     top_p: 1
     presence_penalty: 0
     frequency_penalty: 0
-    sql_query: ${EnsureSQL.output}
     db_result: ${QueryDB.output}
     max_tokens: 3500
   connection: AOAILAB03

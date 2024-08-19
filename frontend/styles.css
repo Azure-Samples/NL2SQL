@@ -28,7 +28,7 @@ footer {visibility: hidden;}
 }
 
 .stChatMessage:has(.chat-assistant) {
-    background-color: white;
+    background-color: rgb(26, 28, 36);
 }
 
 

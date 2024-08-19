@@ -152,7 +152,7 @@ There are two choices; the "Deploy to Azure" offers a one click deployment where
 ### Testing the deployment
 
 #### Streamlit Application
-```bash streamlit run ./core/streamlit/app.py ```
+```bash streamlit run frontend/app.py  ```
 
 #### Prompt Flow API
 ```bash pf flow serve --source ./core/flow --port 8080 --host localhost ``` 

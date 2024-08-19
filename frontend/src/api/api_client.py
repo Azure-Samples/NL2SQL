@@ -6,29 +6,11 @@ import re
 
 def parse_query(response_content):
     # Extract the SQL query using regular expressions
-    query_match = re.search(
-        r"SQL Query:\s*```sql\s*(.*?)\s*```", response_content, re.DOTALL
-    )
-    query = query_match.group(1) if query_match else ""
-
+    query = response_content["sql_query"].replace("```sql", "").replace("```", "")
     # Extract the table part
-    table_match = re.search(r"Database Output:\s*\n\n(.*)", response_content, re.DOTALL)
-    table_content = table_match.group(1) if table_match else ""
+    table_content = response_content["database_output"]
 
-    # Split the table content into lines
-    table_lines = table_content.strip().split("\n")
-
-    # Extract headers
-    headers = [header.strip() for header in table_lines[0].split("|") if header.strip()]
-
-    # Extract rows
-    rows = []
-    for line in table_lines[2:]:  # Skip the header and separator lines
-        values = [value.strip() for value in line.split("|") if value.strip()]
-        row = dict(zip(headers, values))
-        rows.append(row)
-
-    return query, rows
+    return query, table_content
 
 
 class APIClient:
@@ -52,5 +34,5 @@ class APIClient:
 
     def get_response_formatted(self, query, chat_history=[]):
         response = self.get_response(query, chat_history)
-        query, table = parse_query(response["content"])
+        query, table = parse_query(response)
         return query, table
