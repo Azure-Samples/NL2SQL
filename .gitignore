@@ -396,3 +396,9 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+NL2SQL-Chatbot/.runs/*
+NL2SQL-Chatbot/.venv
+NL2SQL-Chatbot/flow/.promptflow/
+NL2SQL-Chatbot/.promptflow/
+NL2SQL-Chatbot/flow/.venv/
+NL2SQL-Chatbot/runit/
