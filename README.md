@@ -88,26 +88,28 @@ You should consider using this tool in the following scenarios:
 
 **Input:**
 ```
-Retrieve the names and contact details of all sellers who have sold more than 50 products.
+Give me the seller name with the best sales performance
 ```
 
 **Generated SQL Query:**
 ```sql
-SELECT seller_name, seller_contact_number
-FROM sellers
-JOIN sales_transaction ON sellers.seller_id = sales_transaction.seller_id
-GROUP BY sellers.seller_id
-HAVING SUM(sales_transaction.quantity) > 50;
+SELECT s.seller_name
+FROM sellers s
+JOIN sales_transaction st ON s.seller_id = st.seller_id
+GROUP BY s.seller_name
+ORDER BY SUM(st.quantity) DESC
+LIMIT 1;
 ```
 
 **Result:**
 ```
-+---------------+---------------------+
-| seller_name   | seller_contact_number|
-+---------------+---------------------+
-| John Doe      | 123-456-7890         |
-| Jane Smith    | 987-654-3210         |
-+---------------+---------------------+
+<table>
+  <tr>
+    <th>seller_name</th>
+  </tr>\n<tr>
+    <td>Jane Smith</td>
+  </tr>
+</table>
 ```
 
 ## Target End Users
