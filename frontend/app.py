@@ -18,7 +18,7 @@ def table_to_markdown(table):
 # Queries to show when the user clicks the button
 suggested_queries = [
     "Give me the seller name with the best sales performance",
-    "Which one is the most profitable product?",
+    "Which product had the most revenue?",
 ]
 
 
