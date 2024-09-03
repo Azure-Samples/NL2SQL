@@ -1,0 +1,84 @@
+id: template_chat_flow
+name: Template Chat Flow
+environment:
+  python_requirements_txt: requirements.txt
+inputs:
+  chat_history:
+    type: list
+    is_chat_input: false
+    is_chat_history: true
+  question:
+    type: string
+    is_chat_input: true
+    default: Which one is the most profitable product?
+outputs:
+  database_output:
+    type: string
+    reference: ${FormatResponse.output}
+    is_chat_output: true
+  role:
+    type: string
+    reference: assistant
+    is_chat_output: false
+  sql_query:
+    type: string
+    reference: ${EnsureSQL.output}
+nodes:
+- name: chat_nl2sql
+  type: llm
+  source:
+    type: code
+    path: chat.jinja2
+  inputs:
+    deployment_name: gpt-4o
+    temperature: 0
+    top_p: 1
+    max_tokens: 3000
+    presence_penalty: 0
+    frequency_penalty: 0
+    chat_history: ${inputs.chat_history}
+    question: ${inputs.question}
+  connection: AOAILAB03
+  api: chat
+  use_variants: false
+- name: EnsureSQL
+  type: llm
+  source:
+    type: code
+    path: EnsureSQL.jinja2
+  inputs:
+    deployment_name: gpt-4o
+    temperature: 0
+    top_p: 1
+    presence_penalty: 0
+    frequency_penalty: 0
+    sql_query: ${chat_nl2sql.output}
+    max_tokens: 3000
+  connection: AOAILAB03
+  api: chat
+  use_variants: false
+- name: QueryDB
+  type: python
+  source:
+    type: code
+    path: QueryDB.py
+  inputs:
+    SQL_conn: SQL_CONN
+    sql_query: ${EnsureSQL.output}
+  use_variants: false
+- name: FormatResponse
+  type: llm
+  source:
+    type: code
+    path: FormatResponse.jinja2
+  inputs:
+    deployment_name: gpt-4o
+    temperature: 0
+    top_p: 1
+    presence_penalty: 0
+    frequency_penalty: 0
+    db_result: ${QueryDB.output}
+    max_tokens: 3500
+  connection: AOAILAB03
+  api: chat
+  use_variants: false

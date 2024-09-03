@@ -1,0 +1,10 @@
+$schema: 
+  https://azuremlschemas.azureedge.net/promptflow/latest/CustomConnection.schema.json
+type: custom
+name: SQL_CONN
+configs:
+  azureml.flow.connection_type: Custom
+  azureml.flow.module: promptflow.connections
+secrets:
+  conn: ${env:SQL_CONN_CONN}
+module: promptflow.connections
