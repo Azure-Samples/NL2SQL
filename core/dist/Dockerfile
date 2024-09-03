@@ -8,6 +8,18 @@ COPY ./flow/requirements.txt /flow/requirements.txt
 # gcc is for build psutil in MacOS
 RUN apt-get update && apt-get install -y runit gcc
 
+# install pyodbc connectors 
+# Install system dependencies for pyodbc
+RUN apt-get update && apt-get install -y \
+    unixodbc \
+    unixodbc-dev \
+    build-essential \
+    libssl-dev \
+    libffi-dev \
+    python3-dev \
+    libpq-dev \
+    odbc-postgresql 
+
 # create conda environment
 RUN conda create -n promptflow-serve python=3.9.16 pip=23.0.1 -q -y && \
     conda run -n promptflow-serve \
