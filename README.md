@@ -161,15 +161,17 @@ There are two choices; the "Deploy to Azure" offers a one click deployment where
 
 ## Supporting documentation
 
-### Build a new Docker environment
+### Build a custom Prompt Flow environment with PostgreSQL driver
 In case you want to try using a PostgreSQL database you will need to install some libraries to be able to use PGSQL.
 Below are some guidance to build a Docker image using Prompt Flow image a base image (see the Dockerfile) and push it to an Azure Container Registry.
 In this way, we can use it as a custom image in our Prompt Flow environment (on Azure AI Foundry).
 
-#### Build the docker image
+```
+# Build the docker image
 docker build -t prompt_flow_pgsql .
 
-#### Set the variables
+# Set the variables
+
 export ACR_NAME="<your-acr-name>"
 export TENANT_ID="<your-tenant-id>"
 
@@ -177,19 +179,20 @@ export ACR_NAME="6b60e1d282864f02a6f885df9bea7b68"
 export IMAGE_NAME="prompt_flow_pgsql"
 export IMAGE_TAG="latest"
 
-#### Login to Azure
+# Login to Azure
 az login --tenant $TENANT_ID
 
-#### Login to ACR
+# Login to ACR
 az acr login --name $ACR_NAME
 
-#### Build the Docker image
+# Build the Docker image
 docker build -t $ACR_NAME.azurecr.io/$IMAGE_NAME:$IMAGE_TAG .
 
-#### Push the Docker image to ACR
+# Push the Docker image to ACR
 docker push $ACR_NAME.azurecr.io/$IMAGE_NAME:$IMAGE_TAG
 
 echo "Docker image pushed to ACR successfully."
+```
 
 ## Resource links
 
