@@ -175,7 +175,6 @@ docker build -t prompt_flow_pgsql .
 export ACR_NAME="<your-acr-name>"
 export TENANT_ID="<your-tenant-id>"
 
-export ACR_NAME="6b60e1d282864f02a6f885df9bea7b68"
 export IMAGE_NAME="prompt_flow_pgsql"
 export IMAGE_TAG="latest"
 
