@@ -191,9 +191,9 @@ docker push $ACR_NAME.azurecr.io/$IMAGE_NAME:$IMAGE_TAG
 
 echo "Docker image pushed to ACR successfully."
 
-### Resource links
+## Resource links
 
-### Licensing
+## Licensing
 
 This repository is licensed under the [MIT License](LICENSE.md).
 
